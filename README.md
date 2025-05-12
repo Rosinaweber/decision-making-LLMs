@@ -11,11 +11,13 @@ This repository contains all the data, transcripts, and analysis scripts support
 
 ## Overview
 
-We evaluate how current LLMs perform on a variety of decision-making tasks by:
-1. **Prompting** different LLMs across several domains.  
-2. **Logging** all prompts & model responses (see `Transcripts/`).  
-3. **Computing** n-gram edit distances between model outputs and a reference “ideal” solution (see `Data/`).  
-4. **Summarizing** results in tables and figures (see `Scripts/`).
+This project tests whether large language models such as GPT-4o, Claude, and Gemini can reason about problems, not just generate answers that sound correct. We ask each model how to solve a problem. Then we follow up by asking how its suggested steps actually solve the problem. If the second answer only repeats the first, we assume the model isn’t analyzing the problem but rather restating a pattern.
+
+We use a decision-making framework that breaks problem-solving into three steps: gather information (intelligence), generate options (design), and pick the best one (choice). We focus on the Design step- Can an LLM describe how a solution addresses the problem and can it show any real understanding?
+
+We measure the similarity between the two responses using 3-gram edit distance. A small difference means the model most likely didn’t add any new analysis. Our results show that across tasks such as cars, computers, health, and hiring- LLMs mostly repeat themselves.
+
+This work helps clarify what modern/popular LLMs can and can’t do when it comes to actual reasoning. This is an early step in exploring how these models might eventually support more complex decision-making.
 
 ---
 
