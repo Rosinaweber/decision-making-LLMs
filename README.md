@@ -3,7 +3,7 @@
 
 This repository contains all the data, transcripts, and analysis scripts supporting the experiments described in:
 
-> **Weber, R., Xu, S., & Gonzales, C. (2025). Decision-Making with Large Language Models.  
+> Weber, Rosina O., Christopher B. Rauch, and Savar Amin. “Decision Making in LLMs: First Step.” *Proceedings of the 2nd Workshop on Case-Based Reasoning and Large Language Model Synergies (CBR-LLM) at ICCBR 2025*, Biarritz, France, June 30 2025. CEUR Workshop Proceedings, 2025.&#x20;
 > CEUR Workshop Proceedings.**  
 > [PDF](Weber_et_al__LLM_Decision_Making_submissions_to_CEUR_Wksp_Proc__CEUR_WS_org.pdf)
 
