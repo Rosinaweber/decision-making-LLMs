@@ -5,19 +5,31 @@ This repository contains all the data, transcripts, and analysis scripts support
 
 > Weber, Rosina O., Christopher B. Rauch, and Savar Amin. “Decision Making in LLMs: First Step.” *Proceedings of the 2nd Workshop on Case-Based Reasoning and Large Language Model Synergies (CBR-LLM) at ICCBR 2025*, Biarritz, France, June 30 2025. CEUR Workshop Proceedings, 2025.&#x20;
 > CEUR Workshop Proceedings.**  
-> [PDF](Weber_et_al__LLM_Decision_Making_submissions_to_CEUR_Wksp_Proc__CEUR_WS_org.pdf)
+> [Read the paper](./CRC%20Weber_Rauch%20Amin%20LLM_Decision_Making.pdf)
+
+
 
 ---
 
 ## Overview
+This project investigates whether modern large language models demonstrate an understanding of how problems and solutions are connected, using Simon’s decision-making model as a framework (Intelligence -> Design -> Choice). Specifically, we examine/assess:
+- Whether LLMs can distinguish between listing steps to address a problem (Design) and describing how those steps solve the problem - i.e., whether they go beyond instruction to show a causal connection
+### Method
+We prompted six recent LLMs - Claude 3.7, GPT-4.1, GPT-4o, GPT-o3, Gemini 1.5 Pro, and Gemini 2.0 Flash - across four domains: car repair, human pain, computer faults, and hiring decisions.
+For each case:
+1. **First prompt**: “What should I do?”
+2. **Second prompt**: “How will these steps solve my problem?”
+We:
+- Logged all responses
+- Computed 3-gram edit distances between each model’s first and second responses to evaluate textual overlap
+  - Low edit distance indicates repeated content
+  - Higher edit distance may indicate more detailed or contextual explanation connecting the steps to the problem
+We then:
+- Aggregated statistics (average, min, max) across all models and domains
+- Manually analyzed sample responses to evaluate whether any connections between problems and solutions were meaningfully made
 
-This project tests whether large language models such as GPT-4o, Claude, and Gemini can reason about problems, not just generate answers that sound correct. We ask each model how to solve a problem. Then we follow up by asking how its suggested steps actually solve the problem. If the second answer only repeats the first, we assume the model isn’t analyzing the problem but rather restating a pattern.
-
-We use a decision-making framework that breaks problem-solving into three steps: gather information (intelligence), generate options (design), and pick the best one (choice). We focus on the Design step- Can an LLM describe how a solution addresses the problem and can it show any real understanding?
-
-We measure the similarity between the two responses using 3-gram edit distance. A small difference means the model most likely didn’t add any new analysis. Our results show that across tasks such as cars, computers, health, and hiring- LLMs mostly repeat themselves.
-
-This work helps clarify what modern/popular LLMs can and can’t do when it comes to actual reasoning. This is an early step in exploring how these models might eventually support more complex decision-making.
+**Additional Analysis**:
+We explored the Choice step through custom hypothetical scenarios involving constraints (e.g., unavailable parts, alien invasions), to observe whether models could adapt and recommend the most context-appropriate solution 
 
 ---
 
@@ -104,7 +116,7 @@ python Scripts/plot_results.py \
 ├── Transcripts/
 │   └── <LLM_name>_<task>.json
 │
-└── Weber_et_al__LLM_Decision_Making_submissions_to_CEUR_Wksp_Proc__CEUR_WS_org.pdf
+└── CRC Weber_Rauch Amin LLM_Decision_Making.pdf
 ```
 
 ---
